@@ -1,6 +1,7 @@
 "use client"
 
 import type React from "react"
+import emailjs from "@emailjs/browser"
 import { useEffect, useState } from "react"
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion"
 import { Github, Instagram, Code, Database, Award, Mail, ExternalLink, Download, Menu, X, ChevronDown, Zap, Rocket, Globe, Shield, Cpu } from 'lucide-react'
@@ -440,6 +441,7 @@ function EnhancedHeroSection() {
         >
           {[
             { href: "https://github.com/Aviijeet12", icon: Github, label: "GitHub" },
+            { href: "https://www.linkedin.com/in/avijit-pratap-singh-587313252/", icon: ExternalLink, label: "LinkedIn" },
             { href: "https://www.instagram.com/avijitt.12/", icon: Instagram, label: "Instagram" },
             { href: "https://leetcode.com/u/avijit_1209/", icon: Code, label: "LeetCode" },
             { href: "https://www.geeksforgeeks.org/user/avijitpreekw/", icon: Database, label: "GeeksforGeeks" },
@@ -539,12 +541,8 @@ function EnhancedAboutSection() {
 
             <div className="grid grid-cols-2 gap-6">
               <div className="text-center p-6 bg-slate-800/50 rounded-2xl border border-purple-500/20 backdrop-blur-sm">
-                <div className="text-4xl font-bold text-purple-400 mb-2">50+</div>
+                <div className="text-4xl font-bold text-purple-400 mb-2">5+</div>
                 <div className="text-gray-300">Projects Completed</div>
-              </div>
-              <div className="text-center p-6 bg-slate-800/50 rounded-2xl border border-purple-500/20 backdrop-blur-sm">
-                <div className="text-4xl font-bold text-blue-400 mb-2">3+</div>
-                <div className="text-gray-300">Years Experience</div>
               </div>
             </div>
           </motion.div>
@@ -893,50 +891,31 @@ function EnhancedContactSection() {
     e.preventDefault()
     setIsSubmitting(true)
 
-    try {
-      // Store in Supabase only if available
-      if (supabase) {
-        const { data, error } = await supabase.from("contacts").insert([
-          {
-            name: formData.name,
-            email: formData.email,
-            subject: formData.subject,
-            message: formData.message,
-            created_at: new Date().toISOString(),
-          },
-        ])
-
-        if (error) {
-          console.error("Error saving to Supabase:", error)
+    emailjs.send(
+      "service_xps0rgh",
+      "template_n0w2xve",
+      {
+        from_name: formData.name,
+        from_email: formData.email,
+        subject: formData.subject,
+        message: formData.message,
+      },
+      "j5LT7kltMPmABktrQ"
+    )
+      .then(
+        (result) => {
+          setFormData({ name: "", email: "", subject: "", message: "" })
+          setSubmitStatus("success")
+        },
+        (error) => {
+          setSubmitStatus("error")
+          console.error("EmailJS error:", error)
         }
-      } else {
-        // If supabase is not configured, show error and skip DB insert
-        setSubmitStatus("error")
-        alert("Contact form backend is not configured. Please set NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY.")
-      }
-
-      // Open Gmail
-      const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=avijitpratapsin@gmail.com&su=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(
-        `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`,
-      )}`
-      window.open(gmailUrl, "_blank")
-
-      // Reset form
-      setFormData({ name: "", email: "", subject: "", message: "" })
-      setSubmitStatus("success")
-    } catch (error) {
-      console.error("Error:", error)
-      setSubmitStatus("error")
-      // Still open Gmail even if there's an error
-      const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=avijitpratapsin@gmail.com&su=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(
-        `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`,
-      )}`
-      window.open(gmailUrl, "_blank")
-      setFormData({ name: "", email: "", subject: "", message: "" })
-    } finally {
-      setIsSubmitting(false)
-      setTimeout(() => setSubmitStatus("idle"), 3000)
-    }
+      )
+      .finally(() => {
+        setIsSubmitting(false)
+        setTimeout(() => setSubmitStatus("idle"), 3000)
+      })
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {

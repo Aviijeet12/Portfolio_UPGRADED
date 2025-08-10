@@ -321,7 +321,7 @@ function EnhancedHeroSection() {
   }
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
+  <section id="home" className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
       {/* Subtle overlay for text readability */}
       <div className="absolute inset-0 bg-slate-900/20 backdrop-blur-[0.5px]" />
       {/* Animated background elements */}
@@ -371,7 +371,7 @@ function EnhancedHeroSection() {
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.4 }}
-          className="text-7xl md:text-9xl font-black mb-6 bg-gradient-to-r from-purple-400 via-blue-400 to-purple-600 bg-clip-text text-transparent leading-tight"
+          className="text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-9xl font-black mb-4 sm:mb-6 bg-gradient-to-r from-purple-400 via-blue-400 to-purple-600 bg-clip-text text-transparent leading-tight break-words"
         >
           AVIJIT SINGH
         </motion.h1>
@@ -383,7 +383,7 @@ function EnhancedHeroSection() {
           className="mb-8"
         >
           <h2 className="text-3xl md:text-4xl mb-4 text-gray-300 font-bold">Full-Stack Developer & DevOps Engineer</h2>
-          <div className="flex flex-wrap justify-center gap-4 text-lg text-purple-300">
+          <div className="flex flex-wrap justify-center gap-2 sm:gap-4 text-base xs:text-lg sm:text-lg text-purple-300">
             <span className="flex items-center gap-2">
               <Code className="w-5 h-5" />
               Flutter Expert
@@ -403,7 +403,7 @@ function EnhancedHeroSection() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.8 }}
-          className="text-xl md:text-2xl mb-12 text-gray-400 max-w-4xl mx-auto leading-relaxed"
+          className="text-base xs:text-lg sm:text-xl md:text-2xl mb-8 sm:mb-12 text-gray-400 max-w-2xl sm:max-w-4xl mx-auto leading-relaxed"
         >
           Transforming ideas into powerful digital solutions. I craft scalable applications and robust cloud
           infrastructures that drive business success in the modern digital landscape.
@@ -413,11 +413,11 @@ function EnhancedHeroSection() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 1 }}
-          className="flex flex-col sm:flex-row gap-6 justify-center mb-16"
+          className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center mb-10 sm:mb-16 w-full"
         >
           <Button
             onClick={scrollToProjects}
-            className="px-10 py-6 bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-white font-bold rounded-full text-xl cursor-pointer transition-all duration-300 transform hover:scale-105 shadow-2xl hover:shadow-purple-500/25"
+            className="w-full sm:w-auto px-6 sm:px-10 py-4 sm:py-6 bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-white font-bold rounded-full text-base sm:text-xl cursor-pointer transition-all duration-300 transform hover:scale-105 shadow-2xl hover:shadow-purple-500/25"
           >
             <Rocket className="w-6 h-6 mr-3" />
             Explore My Work
@@ -426,7 +426,7 @@ function EnhancedHeroSection() {
           <Button
             onClick={downloadCV}
             variant="outline"
-            className="px-10 py-6 border-2 border-purple-500 text-purple-400 hover:bg-purple-500 hover:text-white font-bold rounded-full text-xl cursor-pointer transition-all duration-300 transform hover:scale-105 bg-transparent backdrop-blur-sm"
+            className="w-full sm:w-auto px-6 sm:px-10 py-4 sm:py-6 border-2 border-purple-500 text-purple-400 hover:bg-purple-500 hover:text-white font-bold rounded-full text-base sm:text-xl cursor-pointer transition-all duration-300 transform hover:scale-105 bg-transparent backdrop-blur-sm"
           >
             <Download className="w-6 h-6 mr-3" />
             Download Resume
@@ -437,7 +437,7 @@ function EnhancedHeroSection() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 1.2 }}
-          className="flex justify-center space-x-8"
+          className="flex flex-wrap justify-center gap-4 sm:gap-8"
         >
           {[
             { href: "https://github.com/Aviijeet12", icon: Github, label: "GitHub" },
@@ -457,7 +457,7 @@ function EnhancedHeroSection() {
               className="cursor-pointer group"
             >
               <div className="w-16 h-16 bg-slate-800/50 border border-purple-500/30 rounded-full shadow-2xl flex items-center justify-center group-hover:shadow-xl group-hover:border-purple-400 transition-all duration-300 transform group-hover:scale-110 backdrop-blur-sm">
-                <social.icon className="w-8 h-8 text-gray-300 group-hover:text-purple-400 transition-colors" />
+                <social.icon className="w-7 h-7 sm:w-8 sm:h-8 text-gray-300 group-hover:text-purple-400 transition-colors" />
               </div>
             </motion.a>
           ))}
@@ -469,7 +469,7 @@ function EnhancedHeroSection() {
             className="cursor-pointer group"
           >
             <div className="w-16 h-16 bg-slate-800/50 border border-purple-500/30 rounded-full shadow-2xl flex items-center justify-center group-hover:shadow-xl group-hover:border-purple-400 transition-all duration-300 transform group-hover:scale-110 backdrop-blur-sm">
-              <Mail className="w-8 h-8 text-gray-300 group-hover:text-purple-400 transition-colors" />
+              <Mail className="w-7 h-7 sm:w-8 sm:h-8 text-gray-300 group-hover:text-purple-400 transition-colors" />
             </div>
           </motion.button>
         </motion.div>
@@ -478,7 +478,7 @@ function EnhancedHeroSection() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 2, duration: 1 }}
-          className="absolute bottom-10 left-1/2 transform -translate-x-1/2"
+          className="absolute bottom-4 sm:bottom-10 left-1/2 transform -translate-x-1/2"
         >
           <motion.div
             animate={{ y: [0, 10, 0] }}
@@ -486,7 +486,7 @@ function EnhancedHeroSection() {
             className="cursor-pointer"
             onClick={() => scrollToSection("about")}
           >
-            <ChevronDown className="w-8 h-8 text-purple-400" />
+            <ChevronDown className="w-7 h-7 sm:w-8 sm:h-8 text-purple-400" />
           </motion.div>
         </motion.div>
       </div>

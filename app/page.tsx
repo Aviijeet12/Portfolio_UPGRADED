@@ -32,135 +32,6 @@ if (typeof window !== "undefined") {
   }
 }
 
-// Loading Screen Component
-function LoadingScreen({ isLoading }: { isLoading: boolean }) {
-  return (
-    <AnimatePresence>
-      {isLoading && (
-        <motion.div
-          initial={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 1 }}
-          className="fixed inset-0 z-[10000] bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 flex items-center justify-center"
-        >
-          <div className="text-center">
-            <motion.div
-              animate={{ rotate: 360 }}
-              transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
-              className="w-20 h-20 border-4 border-purple-500/30 border-t-purple-400 rounded-full mx-auto mb-8"
-            />
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5 }}
-              className="text-4xl font-bold bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent mb-4"
-            >
-              AVIJIT SINGH
-            </motion.h1>
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.8 }}
-              className="text-gray-300"
-            >
-              Crafting Digital Excellence...
-            </motion.p>
-          </div>
-        </motion.div>
-      )}
-    </AnimatePresence>
-  )
-}
-
-// Advanced Custom Cursor
-function AdvancedCursor() {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
-  const [isHovering, setIsHovering] = useState(false)
-  const [isClicking, setIsClicking] = useState(false)
-  const [cursorVariant, setCursorVariant] = useState("default")
-
-  useEffect(() => {
-    const updateMousePosition = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY })
-    }
-
-    const handleMouseOver = (e: MouseEvent) => {
-      const target = e.target as HTMLElement
-      if (target.tagName === "BUTTON" || target.tagName === "A" || target.classList.contains("cursor-pointer")) {
-        setIsHovering(true)
-        setCursorVariant("hover")
-      } else if (target.classList.contains("cursor-text")) {
-        setCursorVariant("text")
-      } else {
-        setIsHovering(false)
-        setCursorVariant("default")
-      }
-    }
-
-    const handleMouseDown = () => setIsClicking(true)
-    const handleMouseUp = () => setIsClicking(false)
-
-    document.addEventListener("mousemove", updateMousePosition)
-    document.addEventListener("mouseover", handleMouseOver)
-    document.addEventListener("mousedown", handleMouseDown)
-    document.addEventListener("mouseup", handleMouseUp)
-
-    return () => {
-      document.removeEventListener("mousemove", updateMousePosition)
-      document.removeEventListener("mouseover", handleMouseOver)
-      document.removeEventListener("mousedown", handleMouseDown)
-      document.removeEventListener("mouseup", handleMouseUp)
-    }
-  }, [])
-
-  return (
-    <>
-      {/* Main cursor */}
-      <motion.div
-        className="fixed top-0 left-0 w-4 h-4 pointer-events-none z-[9999] mix-blend-difference"
-        style={{
-          left: mousePosition.x - 8,
-          top: mousePosition.y - 8,
-        }}
-        animate={{
-          scale: isClicking ? 0.8 : isHovering ? 1.5 : 1,
-          backgroundColor: cursorVariant === "text" ? "#10b981" : "#8b5cf6",
-        }}
-        transition={{ type: "spring", stiffness: 500, damping: 28 }}
-      >
-        <div className="w-full h-full bg-gradient-to-r from-purple-400 to-blue-400 rounded-full" />
-      </motion.div>
-
-      {/* Cursor trail */}
-      <motion.div
-        className="fixed top-0 left-0 w-8 h-8 pointer-events-none z-[9998] border-2 border-purple-400/50 rounded-full"
-        style={{
-          left: mousePosition.x - 16,
-          top: mousePosition.y - 16,
-        }}
-        animate={{
-          scale: isHovering ? 2 : 1,
-          opacity: isHovering ? 0.8 : 0.4,
-        }}
-        transition={{ type: "spring", stiffness: 150, damping: 15, delay: 0.1 }}
-      />
-
-      {/* Outer glow */}
-      <motion.div
-        className="fixed top-0 left-0 w-12 h-12 pointer-events-none z-[9997] rounded-full bg-purple-400/10 blur-md"
-        style={{
-          left: mousePosition.x - 24,
-          top: mousePosition.y - 24,
-        }}
-        animate={{
-          scale: isHovering ? 1.5 : 1,
-          opacity: isHovering ? 0.6 : 0.3,
-        }}
-        transition={{ type: "spring", stiffness: 100, damping: 20, delay: 0.2 }}
-      />
-    </>
-  )
-}
 
 // Advanced Navigation
 function AdvancedNavigation() {
@@ -301,17 +172,14 @@ function EnhancedHeroSection() {
   const y = useTransform(scrollY, [0, 500], [0, 150])
   const opacity = useTransform(scrollY, [0, 300], [1, 0])
 
-  const scrollToProjects = () => {
-    const element = document.getElementById("projects")
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" })
-    }
+  const goToGithub = () => {
+    window.open("https://github.com/Aviijeet12", "_blank")
   }
 
   const downloadCV = () => {
     const link = document.createElement("a")
     link.href = "/Avijit_Pratap_Singh_CV.pdf"
-    link.download = "Avijit_Pratap_Singh_CV.pdf"
+    link.download = "AVIJIT-RESUME.pdf"
     link.click()
   }
 
@@ -371,7 +239,7 @@ function EnhancedHeroSection() {
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.4 }}
-          className="text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-9xl font-black mb-4 sm:mb-6 bg-gradient-to-r from-purple-400 via-blue-400 to-purple-600 bg-clip-text text-transparent leading-tight break-words"
+          className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black mb-4 sm:mb-6 bg-gradient-to-r from-purple-400 via-blue-400 to-purple-600 bg-clip-text text-transparent leading-tight break-words"
         >
           AVIJIT SINGH
         </motion.h1>
@@ -416,7 +284,7 @@ function EnhancedHeroSection() {
           className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center mb-10 sm:mb-16 w-full"
         >
           <Button
-            onClick={scrollToProjects}
+            onClick={goToGithub}
             className="w-full sm:w-auto px-6 sm:px-10 py-4 sm:py-6 bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-white font-bold rounded-full text-base sm:text-xl cursor-pointer transition-all duration-300 transform hover:scale-105 shadow-2xl hover:shadow-purple-500/25"
           >
             <Rocket className="w-6 h-6 mr-3" />
@@ -606,20 +474,41 @@ function EnhancedAboutSection() {
 
 // Enhanced Skills Section
 function EnhancedSkillsSection() {
-  const skills = [
-    { name: "Flutter", level: 95, icon: "📱", color: "from-blue-400 to-cyan-400" },
-    { name: "AWS", level: 90, icon: "☁️", color: "from-orange-400 to-red-400" },
-    { name: "DevOps", level: 88, icon: "⚙️", color: "from-green-400 to-emerald-400" },
-    { name: "Docker", level: 85, icon: "🐳", color: "from-blue-400 to-indigo-400" },
-    { name: "Kubernetes", level: 82, icon: "⚓", color: "from-purple-400 to-pink-400" },
-    { name: "CI/CD", level: 87, icon: "🔄", color: "from-yellow-400 to-orange-400" },
-    { name: "MySQL", level: 85, icon: "🗄️", color: "from-blue-400 to-green-400" },
-    { name: "Kotlin", level: 83, icon: "🎯", color: "from-purple-400 to-blue-400" },
+  const skillCategories = [
+    {
+      title: "Programming Languages",
+      icon: "</>",
+      skills: ["Dart", "Java", "Kotlin", "C++", "Python", "SQL"],
+    },
+    {
+      title: "Mobile & Frontend",
+      icon: "📱",
+      skills: ["Flutter", "Android", "Jetpack Compose", "HTML", "CSS", "JavaScript", "React"],
+    },
+    {
+      title: "Cloud & DevOps",
+      icon: "☁️",
+      skills: ["AWS", "OCI", "Docker", "Kubernetes", "Terraform", "GitHub Actions", "CI/CD"],
+    },
+    {
+      title: "Backend & Databases",
+      icon: "🗄️",
+      skills: ["REST APIs", "Node.js", "Express", "MySQL", "PostgreSQL", "Firebase", "Supabase"],
+    },
+    {
+      title: "Tools & Platforms",
+      icon: "🛠️",
+      skills: ["Git", "GitHub", "Linux", "VS Code", "Android Studio", "IntelliJ"],
+    },
+    {
+      title: "Other",
+      icon: "🧠",
+      skills: ["Data Structures & Algorithms", "OOP", "System Design", "Problem Solving"],
+    },
   ]
 
   return (
     <section id="skills" className="relative py-32 overflow-hidden">
-      {/* Subtle overlay for text readability */}
       <div className="absolute inset-0 bg-slate-900/20 backdrop-blur-[0.5px]" />
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <motion.div
@@ -627,45 +516,51 @@ function EnhancedSkillsSection() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mb-20"
+          className="text-center mb-16"
         >
-          <h2 className="text-6xl md:text-7xl font-black text-white mb-8">Skills & Expertise</h2>
-          <div className="w-32 h-2 bg-gradient-to-r from-purple-400 to-blue-400 mx-auto mb-12 rounded-full"></div>
-          <p className="text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
-            Mastering the technologies that power modern applications
+          <h2 className="text-5xl md:text-6xl font-black text-white mb-6">Skills</h2>
+          <div className="w-24 h-2 bg-gradient-to-r from-purple-400 to-blue-400 mx-auto mb-8 rounded-full"></div>
+          <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+            A snapshot of the technologies and tools I use to build scalable, production-ready solutions.
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-8">
-          {skills.map((skill, index) => (
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {skillCategories.map((category, index) => (
             <motion.div
-              key={skill.name}
-              initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: index * 0.1 }}
+              key={category.title}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="group"
             >
-              <div className="bg-slate-800/50 p-8 rounded-2xl border border-purple-500/20 backdrop-blur-sm hover:border-purple-400/40 transition-all duration-300 group-hover:transform group-hover:scale-105">
-                <div className="flex items-center justify-between mb-6">
-                  <div className="flex items-center gap-4">
-                    <span className="text-3xl">{skill.icon}</span>
-                    <h3 className="text-white font-bold text-2xl">{skill.name}</h3>
-                  </div>
-                  <span className="text-purple-400 font-bold text-xl">{skill.level}%</span>
-                </div>
-                <div className="w-full bg-slate-700 rounded-full h-4 overflow-hidden">
-                  <motion.div
-                    initial={{ width: 0 }}
-                    whileInView={{ width: `${skill.level}%` }}
-                    transition={{ duration: 1.5, delay: index * 0.1 }}
-                    viewport={{ once: true }}
-                    className={`bg-gradient-to-r ${skill.color} h-4 rounded-full relative`}
-                  >
-                    <div className="absolute inset-0 bg-white/20 animate-pulse"></div>
-                  </motion.div>
-                </div>
-              </div>
+              <Card className="relative overflow-hidden bg-gradient-to-br from-slate-900/80 via-slate-900/60 to-purple-900/50 border border-purple-500/30 h-full hover:border-purple-400/70 transition-all duration-300 backdrop-blur-md shadow-xl hover:shadow-purple-900/40">
+                <div className="pointer-events-none absolute inset-0 opacity-40 bg-[radial-gradient(circle_at_top,_#8b5cf6_0,_transparent_55%),_radial-gradient(circle_at_bottom,_#0ea5e9_0,_transparent_55%)]" />
+                <CardHeader className="pb-3 relative z-10 flex items-center justify-between">
+                  <CardTitle className="text-white text-lg md:text-xl font-semibold flex items-center gap-3">
+                    <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-slate-900/70 border border-purple-500/70 text-sm font-bold text-purple-200">
+                      {category.icon}
+                    </span>
+                    <span className="flex items-center gap-2">
+                      {category.title}
+                      <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-purple-500/20 text-[0.7rem] text-purple-200 border border-purple-400/50">
+                        {index + 1}
+                      </span>
+                    </span>
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="relative z-10 flex flex-wrap gap-2">
+                  {category.skills.map((skill) => (
+                    <Badge
+                      key={skill}
+                      variant="outline"
+                      className="border-purple-500/40 text-purple-100 bg-slate-900/70 px-3 py-1 text-xs md:text-sm hover:bg-purple-500/20 hover:border-purple-300 transition-colors"
+                    >
+                      {skill}
+                    </Badge>
+                  ))}
+                </CardContent>
+              </Card>
             </motion.div>
           ))}
         </div>
@@ -678,40 +573,41 @@ function EnhancedSkillsSection() {
 function EnhancedProjectsSection() {
   const projects = [
     {
-      title: "E-Commerce Flutter App",
+      title: "LegalEase - AI-Powered Legal Assistant",
       description:
-        "A comprehensive e-commerce platform built with Flutter, featuring advanced user authentication, real-time inventory management, secure payment processing, and AI-powered product recommendations.",
-      tech: ["Flutter", "Firebase", "Stripe API", "Provider", "AI/ML"],
-      image: "/placeholder.svg?height=400&width=600",
+        "An AI-driven legal assistant built primarily in Kotlin with supporting TypeScript tooling and Firebase/XML configuration.",
+      tech: ["Kotlin", "TypeScript", "Shell", "Firebase", "XML"],
+      category: "Web App",
+      status: "Active",
+      link: "https://github.com/Aviijeet12/LegalEase",
+    },
+    {
+      title: "Healthcare Symptom Checker",
+      description:
+        "A healthcare-focused application, mostly TypeScript-based, with CSS styling, Python-backed logic and JavaScript integrations, deployed using Vercel/Render and powered by Gemini.",
+      tech: ["TypeScript", "CSS", "Python", "JavaScript", "Vercel", "Render", "Gemini"],
       category: "Mobile App",
-      status: "Live",
+      status: "Active",
+      link: "https://github.com/Aviijeet12/healthcare-symptom-checker",
     },
     {
-      title: "AWS Infrastructure Automation",
+      title: "Inventory Manager",
       description:
-        "Enterprise-grade infrastructure automation solution using Terraform and advanced CI/CD pipelines, reducing deployment time by 80% and ensuring zero-downtime deployments across multiple environments.",
-      tech: ["AWS", "Terraform", "Jenkins", "Docker", "Kubernetes"],
-      image: "/placeholder.svg?height=400&width=600",
-      category: "DevOps",
-      status: "Production",
-    },
-    {
-      title: "Flutter Task Management Suite",
-      description:
-        "A sophisticated productivity application with real-time collaboration, offline-first architecture, advanced analytics, and beautiful micro-interactions. Features team management and AI-powered task prioritization.",
-      tech: ["Flutter", "SQLite", "Provider", "Firebase", "WebRTC"],
-      image: "/placeholder.svg?height=400&width=600",
-      category: "Mobile App",
-      status: "Beta",
-    },
-    {
-      title: "Kubernetes Monitoring Platform",
-      description:
-        "Custom monitoring and observability platform for Kubernetes clusters with real-time metrics, intelligent alerting, automated scaling, and comprehensive security monitoring with ML-based anomaly detection.",
-      tech: ["Kubernetes", "Prometheus", "Grafana", "Go", "Machine Learning"],
-      image: "/placeholder.svg?height=400&width=600",
-      category: "DevOps",
-      status: "Live",
+        "Full-stack inventory management system with a Spring Boot REST API, React + TypeScript frontend, and an H2 in-memory database.",
+      tech: [
+        "Spring Boot",
+        "REST API",
+        "JPA/Hibernate",
+        "React",
+        "TypeScript",
+        "Modern CSS",
+        "H2 Database",
+        "Maven",
+        "npm",
+      ],
+      category: "Full-stack App",
+      status: "Active",
+      link: "https://github.com/Aviijeet12/inventory-manager",
     },
   ]
 
@@ -744,21 +640,22 @@ function EnhancedProjectsSection() {
               viewport={{ once: true }}
               className="group"
             >
-              <Card className="bg-slate-800/50 border-purple-500/20 overflow-hidden hover:border-purple-400/40 transition-all duration-500 cursor-pointer backdrop-blur-sm group-hover:transform group-hover:scale-105 h-full">
-                <div className="relative overflow-hidden">
-                  <img
-                    src={project.image || "/placeholder.svg"}
-                    alt={project.title}
-                    className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 to-transparent" />
-                  <div className="absolute top-4 left-4 flex gap-2">
-                    <Badge className="bg-purple-500/80 text-white border-0">{project.category}</Badge>
-                    <Badge className="bg-green-500/80 text-white border-0">{project.status}</Badge>
+              <Card className="bg-slate-800/50 border-purple-500/20 hover:border-purple-400/40 transition-all duration-500 cursor-pointer backdrop-blur-sm group-hover:transform group-hover:scale-105 h-full">
+                <div className="flex items-start justify-between gap-4 p-6 pb-2">
+                  <div>
+                    <Badge className="bg-purple-500/80 text-white border-0 mb-2">{project.category}</Badge>
+                    <Badge className="bg-green-500/80 text-white border-0 mb-2 ml-2">{project.status}</Badge>
                   </div>
-                  <div className="absolute bottom-4 right-4">
-                    <ExternalLink className="w-6 h-6 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  </div>
+                  {project.link && (
+                    <a
+                      href={project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-center w-10 h-10 rounded-full bg-slate-900/70 border border-white/30 hover:border-purple-400 transition-colors"
+                    >
+                      <ExternalLink className="w-5 h-5 text-white" />
+                    </a>
+                  )}
                 </div>
                 <CardHeader className="pb-4">
                   <CardTitle className="text-white text-2xl font-bold group-hover:text-purple-400 transition-colors">
@@ -1114,31 +1011,6 @@ function EnhancedContactSection() {
   )
 }
 
-// Enhanced Footer
-function EnhancedFooter() {
-  return (
-    <footer className="relative py-8 overflow-hidden">
-      {/* Subtle overlay for text readability */}
-      <div className="absolute inset-0 bg-slate-900/20 backdrop-blur-[0.5px]" />
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <div className="text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="border-t border-purple-500/20 pt-8"
-          >
-            <p className="text-gray-400 text-lg">
-              © 2024 Avijit Pratap Singh. Crafted with passion, powered by innovation.
-            </p>
-            <p className="text-gray-500 mt-2">Built with Next.js, Three.js, and a lot of ☕</p>
-          </motion.div>
-        </div>
-      </div>
-    </footer>
-  )
-}
 
 // Scroll to section helper
 function scrollToSection(sectionId: string) {
@@ -1150,18 +1022,9 @@ function scrollToSection(sectionId: string) {
 
 // Main Portfolio Component
 export default function Portfolio() {
-  const [isLoading, setIsLoading] = useState(true)
-  const [isMounted, setIsMounted] = useState(false)
   const [hasThreeError, setHasThreeError] = useState(false)
 
   useEffect(() => {
-    setIsMounted(true)
-    // Simulate loading time
-    const timer = setTimeout(() => {
-      setIsLoading(false)
-    }, 3000)
-
-    // Error handler for Three.js
     const handleError = (event: ErrorEvent) => {
       if (event.message?.includes("three") || event.message?.includes("canvas")) {
         setHasThreeError(true)
@@ -1172,19 +1035,12 @@ export default function Portfolio() {
     window.addEventListener("error", handleError)
 
     return () => {
-      clearTimeout(timer)
       window.removeEventListener("error", handleError)
     }
   }, [])
 
-  if (!isMounted) {
-    return null
-  }
-
   return (
-    <div className="min-h-screen bg-slate-900 overflow-x-hidden" style={{ cursor: "none" }}>
-      <LoadingScreen isLoading={isLoading} />
-      <AdvancedCursor />
+    <div className="min-h-screen bg-slate-900 overflow-x-hidden">
       <ScrollProgress />
       {!hasThreeError && <ThreeScene />}
       <AdvancedNavigation />
@@ -1194,7 +1050,6 @@ export default function Portfolio() {
       <EnhancedProjectsSection />
       <EnhancedCertificationsSection />
       <EnhancedContactSection />
-      <EnhancedFooter />
     </div>
   )
 }

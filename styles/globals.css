@@ -128,12 +128,7 @@ html {
 }
 
 body {
-  cursor: none !important;
   overflow-x: hidden;
-}
-
-* {
-  cursor: none !important;
 }
 
 /* Smooth scrolling for all elements */

@@ -89,7 +89,8 @@ function AdvancedNavigation() {
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
-            className="text-2xl font-bold bg-gradient-to-r from-purple-400 via-blue-400 to-purple-600 bg-clip-text text-transparent"
+            className="text-2xl font-bold bg-gradient-to-r from-purple-400 via-blue-400 to-purple-600 bg-clip-text text-transparent cursor-pointer"
+            onClick={() => scrollToSection("home")}
           >
             AVIJIT SINGH
           </motion.div>

@@ -696,8 +696,8 @@ function EnhancedCertificationsSection() {
       description:
         "Comprehensive DevOps practices including advanced CI/CD pipelines, containerization strategies, microservices architecture, and cloud-native deployment methodologies.",
       icon: <Award className="w-12 h-12 text-blue-400" />,
-      date: "2024",
-      credentialId: "IBM-DEVOPS-2024",
+      date: "2025",
+      credentialId: "1SckikiMEo",
     },
     {
       title: "Oracle Cloud Infrastructure GenAI Professional",
@@ -705,8 +705,8 @@ function EnhancedCertificationsSection() {
       description:
         "Advanced expertise in generative AI services, machine learning model deployment, and AI-powered application development on Oracle Cloud Infrastructure platform.",
       icon: <Database className="w-12 h-12 text-red-400" />,
-      date: "2024",
-      credentialId: "OCI-GENAI-2024",
+      date: "2025",
+      credentialId: "101988911OCI25GAIOCP",
     },
     {
       title: "Oracle Cloud Infrastructure Architect Associate",
@@ -714,8 +714,8 @@ function EnhancedCertificationsSection() {
       description:
         "Cloud architecture design, implementation, and management expertise covering compute, storage, networking, security, and governance on Oracle Cloud Infrastructure.",
       icon: <Code className="w-12 h-12 text-orange-400" />,
-      date: "2023",
-      credentialId: "OCI-ARCH-2023",
+      date: "2025",
+      credentialId: "101988911OCI25CAA",
     },
   ]
 

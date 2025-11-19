@@ -250,19 +250,19 @@ function EnhancedHeroSection() {
           transition={{ duration: 1, delay: 0.6 }}
           className="mb-8"
         >
-          <h2 className="text-3xl md:text-4xl mb-4 text-gray-300 font-bold">Full-Stack Developer & DevOps Engineer</h2>
+          <h2 className="text-3xl md:text-4xl mb-4 text-gray-300 font-bold">Full-Stack Application Developer & DevOps Engineer</h2>
           <div className="flex flex-wrap justify-center gap-2 sm:gap-4 text-base xs:text-lg sm:text-lg text-purple-300">
             <span className="flex items-center gap-2">
               <Code className="w-5 h-5" />
-              Flutter Expert
+              Kotlin, Java
             </span>
             <span className="flex items-center gap-2">
               <Database className="w-5 h-5" />
-              AWS Specialist
+              AWS 
             </span>
             <span className="flex items-center gap-2">
               <Shield className="w-5 h-5" />
-              DevOps Engineer
+              DevOps
             </span>
           </div>
         </motion.div>
@@ -379,7 +379,7 @@ function EnhancedAboutSection() {
           <h2 className="text-6xl md:text-7xl font-black text-white mb-8">About Me</h2>
           <div className="w-32 h-2 bg-gradient-to-r from-purple-400 to-blue-400 mx-auto mb-12 rounded-full"></div>
           <p className="text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
-            Passionate about creating digital experiences that matter
+            I Like Building Stuff and DSA
           </p>
         </motion.div>
 
@@ -393,11 +393,11 @@ function EnhancedAboutSection() {
           >
             <div>
               <h3 className="text-4xl font-bold text-white mb-6 bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
-                Developer & Innovator
+                Application Developer
               </h3>
               <p className="text-xl text-gray-300 leading-relaxed mb-6">
                 I'm Avijit Pratap Singh, a passionate software developer who specializes in creating cutting-edge mobile
-                applications and robust cloud infrastructures. With expertise in Flutter development and AWS services, I
+                applications and robust cloud infrastructures. With expertise in Native Android development and AWS services, I
                 transform complex business requirements into elegant, scalable solutions.
               </p>
               <p className="text-xl text-gray-300 leading-relaxed">
@@ -426,12 +426,12 @@ function EnhancedAboutSection() {
               {
                 icon: <Code className="w-16 h-16 text-purple-400" />,
                 title: "Mobile Development",
-                description: "Flutter & Cross-platform Solutions",
+                description: "Kotlin Native Mobile Apps",
                 color: "purple",
               },
               {
                 icon: <Database className="w-16 h-16 text-blue-400" />,
-                title: "DevOps Engineering",
+                title: "DevOps",
                 description: "CI/CD & Infrastructure Automation",
                 color: "blue",
               },
@@ -444,7 +444,7 @@ function EnhancedAboutSection() {
               {
                 icon: <Shield className="w-16 h-16 text-green-400" />,
                 title: "Problem Solving",
-                description: "Algorithmic & System Design",
+                description: "DSA & System Design",
                 color: "green",
               },
             ].map((item, index) => (
@@ -577,7 +577,7 @@ function EnhancedProjectsSection() {
       description:
         "An AI-driven legal assistant built primarily in Kotlin with supporting TypeScript tooling and Firebase/XML configuration.",
       tech: ["Kotlin", "TypeScript", "Shell", "Firebase", "XML"],
-      category: "Web App",
+      category: "Full-Stack Mobile App",
       status: "Active",
       link: "https://github.com/Aviijeet12/LegalEase",
     },
@@ -586,9 +586,9 @@ function EnhancedProjectsSection() {
       description:
         "A healthcare-focused application, mostly TypeScript-based, with CSS styling, Python-backed logic and JavaScript integrations, deployed using Vercel/Render and powered by Gemini.",
       tech: ["TypeScript", "CSS", "Python", "JavaScript", "Vercel", "Render", "Gemini"],
-      category: "Mobile App",
+      category: "Full-Stack Web App",
       status: "Active",
-      link: "https://github.com/Aviijeet12/healthcare-symptom-checker",
+      link: "https://healthcare-symptom-checker-sooty.vercel.app/",
     },
     {
       title: "Inventory Manager",
@@ -605,9 +605,9 @@ function EnhancedProjectsSection() {
         "Maven",
         "npm",
       ],
-      category: "Full-stack App",
+      category: "Full-Stack Web App",
       status: "Active",
-      link: "https://github.com/Aviijeet12/inventory-manager",
+      link: "https://inventory-manager-application.netlify.app/",
     },
   ]
 

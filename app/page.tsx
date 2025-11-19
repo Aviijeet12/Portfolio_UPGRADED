@@ -139,7 +139,14 @@ function AdvancedNavigation() {
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.1 }}
-                  onClick={() => scrollToSection(item.id)}
+                  onClick={() => {
+                    setIsOpen(false)
+                    setActiveSection(item.id)
+                    setTimeout(() => {
+                      const el = document.getElementById(item.id)
+                      if (el) el.scrollIntoView({ behavior: "smooth" })
+                    }, 200)
+                  }}
                   className="w-full text-left px-4 py-3 text-gray-300 hover:text-purple-400 hover:bg-slate-800/50 rounded-lg cursor-pointer transition-all duration-300 flex items-center gap-3"
                 >
                   {item.icon}
@@ -352,7 +359,10 @@ function EnhancedHeroSection() {
             animate={{ y: [0, 10, 0] }}
             transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}
             className="cursor-pointer"
-            onClick={() => scrollToSection("about")}
+            onClick={() => {
+              const el = document.getElementById("about")
+              if (el) el.scrollIntoView({ behavior: "smooth" })
+            }}
           >
             <ChevronDown className="w-7 h-7 sm:w-8 sm:h-8 text-purple-400" />
           </motion.div>
@@ -1009,15 +1019,6 @@ function EnhancedContactSection() {
       </div>
     </section>
   )
-}
-
-
-// Scroll to section helper
-function scrollToSection(sectionId: string) {
-  const element = document.getElementById(sectionId)
-  if (element) {
-    element.scrollIntoView({ behavior: "smooth" })
-  }
 }
 
 // Main Portfolio Component

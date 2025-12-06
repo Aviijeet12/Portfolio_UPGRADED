@@ -4,7 +4,7 @@ import type React from "react"
 
 import { useRef, Suspense, useState, useEffect } from "react"
 import { Canvas, useFrame } from "@react-three/fiber"
-import { Environment, Float, Sphere, Box, Torus, Octahedron, Stars, Sparkles } from "@react-three/drei"
+import { Float, Sphere, Box, Torus, Octahedron, Stars, Sparkles } from "@react-three/drei"
 import type * as THREE from "three"
 
 // Particle System Component
@@ -139,7 +139,9 @@ export default function ThreeScene() {
       <SceneErrorBoundary>
         <Canvas camera={{ position: [0, 0, 15], fov: 75 }} onError={() => console.warn("Canvas error occurred")}>
           <Suspense fallback={null}>
-            {/* Lighting */}
+            {/* Background + Lighting */}
+            <color attach="background" args={["#020617"]} />
+            <fog attach="fog" args={["#020617", 10, 50]} />
             <ambientLight intensity={0.3} />
             <pointLight position={[10, 10, 10]} intensity={1} color="#8b5cf6" />
             <pointLight position={[-10, -10, -5]} intensity={0.8} color="#3b82f6" />
@@ -186,9 +188,6 @@ export default function ThreeScene() {
             <Floating3DText text="DEV" position={[-15, 8, -25]} color="#10b981" />
             <Floating3DText text="OPS" position={[12, -8, -22]} color="#f59e0b" />
             <Floating3DText text="AWS" position={[18, 5, -28]} color="#ff6b35" />
-
-            {/* Environment */}
-            <Environment preset="night" />
 
             {/* Sparkles */}
             <Sparkles count={100} scale={[20, 20, 20]} size={2} speed={0.4} />

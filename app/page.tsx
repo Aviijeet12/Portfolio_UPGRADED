@@ -489,31 +489,49 @@ function EnhancedSkillsSection() {
     {
       title: "Programming Languages",
       icon: "</>",
+      signal: "Compiler-friendly + scripting",
+      description: "Typed and scripting languages for performant apps and automation.",
+      accent: "from-pink-500/20 via-purple-500/10 to-transparent",
       skills: ["Dart", "Java", "Kotlin", "C++", "Python", "SQL"],
     },
     {
       title: "Mobile & Frontend",
       icon: "📱",
+      signal: "Immersive UI systems",
+      description: "Shipping fluid Android and web experiences with shared design systems.",
+      accent: "from-blue-500/20 via-cyan-500/10 to-transparent",
       skills: ["Flutter", "Android", "Jetpack Compose", "HTML", "CSS", "JavaScript", "React"],
     },
     {
       title: "Cloud & DevOps",
       icon: "☁️",
+      signal: "Scalable delivery pipelines",
+      description: "Automating releases, infra as code, and observability across clouds.",
+      accent: "from-sky-500/20 via-emerald-500/10 to-transparent",
       skills: ["AWS", "OCI", "Docker", "Kubernetes", "Terraform", "GitHub Actions", "CI/CD"],
     },
     {
       title: "Backend & Databases",
       icon: "🗄️",
+      signal: "API + data layer craft",
+      description: "Designing resilient services with pragmatic persistence strategies.",
+      accent: "from-amber-500/20 via-orange-500/10 to-transparent",
       skills: ["REST APIs", "Node.js", "Express", "MySQL", "PostgreSQL", "Firebase", "Supabase"],
     },
     {
       title: "Tools & Platforms",
       icon: "🛠️",
+      signal: "Daily engineering cockpit",
+      description: "Editor, OS, and collaboration stack that keeps delivery fast.",
+      accent: "from-lime-500/20 via-teal-500/10 to-transparent",
       skills: ["Git", "GitHub", "Linux", "VS Code", "Android Studio", "IntelliJ"],
     },
     {
       title: "Other",
       icon: "🧠",
+      signal: "Systems thinking",
+      description: "Product discovery, architecture, and algorithmic problem solving.",
+      accent: "from-fuchsia-500/20 via-rose-500/10 to-transparent",
       skills: ["Data Structures & Algorithms", "OOP", "System Design", "Problem Solving"],
     },
   ]
@@ -545,31 +563,49 @@ function EnhancedSkillsSection() {
               transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: true }}
             >
-              <Card className="relative overflow-hidden bg-gradient-to-br from-slate-900/80 via-slate-900/60 to-purple-900/50 border border-purple-500/30 h-full hover:border-purple-400/70 transition-all duration-300 backdrop-blur-md shadow-xl hover:shadow-purple-900/40">
-                <div className="pointer-events-none absolute inset-0 opacity-40 bg-[radial-gradient(circle_at_top,_#8b5cf6_0,_transparent_55%),_radial-gradient(circle_at_bottom,_#0ea5e9_0,_transparent_55%)]" />
-                <CardHeader className="pb-3 relative z-10 flex items-center justify-between">
-                  <CardTitle className="text-white text-lg md:text-xl font-semibold flex items-center gap-3">
-                    <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-slate-900/70 border border-purple-500/70 text-sm font-bold text-purple-200">
+              <Card className="group relative h-full overflow-hidden rounded-3xl border border-white/5 bg-slate-900/70 shadow-[0_20px_60px_rgba(15,23,42,0.45)]">
+                <div
+                  className={`pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br ${category.accent}`}
+                />
+                <div className="absolute inset-px rounded-[22px] bg-slate-900/80" />
+                <CardHeader className="relative z-10 pb-4">
+                  <div className="flex items-start justify-between gap-4">
+                    <div>
+                      <p className="text-[0.65rem] uppercase tracking-[0.3em] text-slate-400 mb-2">
+                        {category.signal}
+                      </p>
+                      <CardTitle className="text-white text-xl md:text-2xl font-semibold">
+                        {category.title}
+                      </CardTitle>
+                      <p className="text-sm text-slate-400 mt-2 leading-relaxed">
+                        {category.description}
+                      </p>
+                    </div>
+                    <span className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-white/5 text-lg">
                       {category.icon}
                     </span>
-                    <span className="flex items-center gap-2">
-                      {category.title}
-                      <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-purple-500/20 text-[0.7rem] text-purple-200 border border-purple-400/50">
-                        {index + 1}
-                      </span>
-                    </span>
-                  </CardTitle>
+                  </div>
                 </CardHeader>
-                <CardContent className="relative z-10 flex flex-wrap gap-2">
-                  {category.skills.map((skill) => (
-                    <Badge
-                      key={skill}
-                      variant="outline"
-                      className="border-purple-500/40 text-purple-100 bg-slate-900/70 px-3 py-1 text-xs md:text-sm hover:bg-purple-500/20 hover:border-purple-300 transition-colors"
-                    >
-                      {skill}
-                    </Badge>
-                  ))}
+                <CardContent className="relative z-10 flex flex-col gap-4">
+                  <div className="flex flex-wrap gap-2">
+                    {category.skills.slice(0, 3).map((skill) => (
+                      <span
+                        key={`${category.title}-featured-${skill}`}
+                        className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-slate-100"
+                      >
+                        <span className="h-1.5 w-1.5 rounded-full bg-gradient-to-r from-purple-400 to-blue-400" />
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                  <div className="grid grid-cols-2 gap-x-4 gap-y-2">
+                    {category.skills.map((skill) => (
+                      <div key={`${category.title}-${skill}`} className="flex items-center gap-2 text-sm text-slate-200">
+                        <span className="h-1.5 w-1.5 rounded-full bg-gradient-to-r from-blue-400 to-purple-400" />
+                        {skill}
+                      </div>
+                    ))}
+                  </div>
                 </CardContent>
               </Card>
             </motion.div>
@@ -593,32 +629,51 @@ function EnhancedProjectsSection() {
       link: "https://github.com/Aviijeet12/LegalEase",
     },
     {
+      title: "AstraQA - Autonomous QA Companion",
+      description:
+        "Next.js 16 + Prisma platform that ingests product documentation, builds an internal knowledge base, and generates AI-assisted test cases plus Selenium scripts from natural language prompts.",
+      tech: [
+        "Next.js 16",
+        "React 19",
+        "Prisma",
+        "PostgreSQL",
+        "NextAuth",
+        "Tailwind CSS",
+        "Supabase",
+        "LLM APIs",
+      ],
+      category: "AI Test Automation",
+      status: "In Development",
+      link: "https://github.com/Aviijeet12/AstraQA",
+    },
+    {
+      title: "ProU Employee Management System",
+      description:
+        "Role-based employee and task management suite with JWT auth, admin + employee dashboards, and fully deployed Next.js frontend plus Express/MongoDB backend.",
+      tech: [
+        "Next.js",
+        "React",
+        "TypeScript",
+        "Tailwind CSS",
+        "Node.js",
+        "Express.js",
+        "MongoDB",
+        "JWT",
+        "Render",
+        "Vercel",
+      ],
+      category: "Full-Stack Management Platform",
+      status: "Production Ready",
+      link: "https://github.com/Aviijeet12/ProU-EMS",
+    },
+    {
       title: "Healthcare Symptom Checker",
       description:
         "A healthcare-focused application, mostly TypeScript-based, with CSS styling, Python-backed logic and JavaScript integrations, deployed using Vercel/Render and powered by Gemini.",
       tech: ["TypeScript", "CSS", "Python", "JavaScript", "Vercel", "Render", "Gemini"],
       category: "Full-Stack Web App",
       status: "Active",
-      link: "https://healthcare-symptom-checker-sooty.vercel.app/",
-    },
-    {
-      title: "Inventory Manager",
-      description:
-        "Full-stack inventory management system with a Spring Boot REST API, React + TypeScript frontend, and an H2 in-memory database.",
-      tech: [
-        "Spring Boot",
-        "REST API",
-        "JPA/Hibernate",
-        "React",
-        "TypeScript",
-        "Modern CSS",
-        "H2 Database",
-        "Maven",
-        "npm",
-      ],
-      category: "Full-Stack Web App",
-      status: "Active",
-      link: "https://inventory-manager-application.netlify.app/",
+      link: "https://github.com/Aviijeet12/healthcare-symptom-checker",
     },
   ]
 

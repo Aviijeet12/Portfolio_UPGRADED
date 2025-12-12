@@ -186,8 +186,8 @@ function EnhancedHeroSection() {
 
   const downloadCV = () => {
     const link = document.createElement("a")
-    link.href = "/AVIJIT-RESUME.pdf"
-    link.download = "AVIJIT-RESUME.pdf"
+    link.href = "/AVIJIT-SWD.pdf"
+    link.download = "AVIJIT-SWD.pdf"
     link.click()
   }
 

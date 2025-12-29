@@ -1,2 +1,2 @@
 # Avijit portfolio
-link - https://portfolio-upgraded.vercel.app/
+link - https://avijitsingh.dev

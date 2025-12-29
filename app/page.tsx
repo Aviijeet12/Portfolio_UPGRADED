@@ -1,7 +1,6 @@
 "use client"
 
 import type React from "react"
-import emailjs from "@emailjs/browser"
 import { useEffect, useState } from "react"
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion"
 import { Github, Instagram, Code, Database, Award, Mail, ExternalLink, Download, Menu, X, ChevronDown, Zap, Rocket, Globe, Shield, Cpu } from 'lucide-react'
@@ -186,8 +185,8 @@ function EnhancedHeroSection() {
 
   const downloadCV = () => {
     const link = document.createElement("a")
-    link.href = "/AVIJIT-RESUME.pdf"
-    link.download = "AVIJIT-RESUME.pdf"
+    link.href = "/AVIJIT-SWD.pdf"
+    link.download = "AVIJIT-SD.pdf"
     link.click()
   }
 
@@ -258,11 +257,11 @@ function EnhancedHeroSection() {
           transition={{ duration: 1, delay: 0.6 }}
           className="mb-8"
         >
-          <h2 className="text-3xl md:text-4xl mb-4 text-gray-300 font-bold">Full-Stack Application Developer & DevOps Engineer</h2>
+          <h2 className="text-3xl md:text-4xl mb-4 text-gray-300 font-bold">Software Developer • Full-Stack / Backend Engineering</h2>
           <div className="flex flex-wrap justify-center gap-2 sm:gap-4 text-base xs:text-lg sm:text-lg text-purple-300">
             <span className="flex items-center gap-2">
               <Code className="w-5 h-5" />
-              Kotlin, Java
+              MERN
             </span>
             <span className="flex items-center gap-2">
               <Database className="w-5 h-5" />
@@ -404,11 +403,11 @@ function EnhancedAboutSection() {
           >
             <div>
               <h3 className="text-4xl font-bold text-white mb-6 bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
-                Application Developer
+                Software Developer
               </h3>
               <p className="text-xl text-gray-300 leading-relaxed mb-6">
                 I'm Avijit Pratap Singh, a passionate software developer who specializes in creating cutting-edge mobile
-                applications and robust cloud infrastructures. With expertise in Native Android development and AWS services, I
+                applications and robust cloud infrastructures. With expertise in Application development and AWS services, I
                 transform complex business requirements into elegant, scalable solutions.
               </p>
               <p className="text-xl text-gray-300 leading-relaxed">
@@ -436,8 +435,8 @@ function EnhancedAboutSection() {
             {[
               {
                 icon: <Code className="w-16 h-16 text-purple-400" />,
-                title: "Mobile Development",
-                description: "Kotlin Native Mobile Apps",
+                title: "Application Development",
+                description: "MERN Stack Applications",
                 color: "purple",
               },
               {
@@ -620,60 +619,78 @@ function EnhancedSkillsSection() {
 function EnhancedProjectsSection() {
   const projects = [
     {
-      title: "LegalEase - AI-Powered Legal Assistant",
+      title: "AstraQA — Full-Stack QA Automation Assistant",
       description:
-        "An AI-driven legal assistant built primarily in Kotlin with supporting TypeScript tooling and Firebase/XML configuration.",
-      tech: ["Kotlin", "TypeScript", "Shell", "Firebase", "XML"],
-      category: "Full-Stack Mobile App",
-      status: "Active",
-      link: "https://github.com/Aviijeet12/LegalEase",
-    },
-    {
-      title: "AstraQA - Autonomous QA Companion",
-      description:
-        "Next.js 16 + Prisma platform that ingests product documentation, builds an internal knowledge base, and generates AI-assisted test cases plus Selenium scripts from natural language prompts.",
+        "A robust QA platform that builds a knowledge base from documentation, generates automated test cases using RAG + LLMs, and produces Selenium automation scripts. Includes user auth and dashboard.",
       tech: [
         "Next.js 16",
         "React 19",
-        "Prisma",
+        "Node.js",
+        "TypeScript",
+        "Tailwind CSS",
+        "Prisma ORM",
         "PostgreSQL",
         "NextAuth",
-        "Tailwind CSS",
+        "Vercel",
+        "LLaMA 2",
         "Supabase",
-        "LLM APIs",
+        "Hugging Face Inference API"
       ],
       category: "AI Test Automation",
-      status: "In Development",
-      link: "https://github.com/Aviijeet12/AstraQA",
+      status: "Active",
+      link: "https://astra.avijitsingh.dev",
     },
     {
-      title: "ProU Employee Management System",
+      title: "Healthcare Symptom Checker — AI-Driven Symptom Insight Tool",
       description:
-        "Role-based employee and task management suite with JWT auth, admin + employee dashboards, and fully deployed Next.js frontend plus Express/MongoDB backend.",
+        "A symptom analyzer that receives free-form text symptoms and returns likely conditions and general recommendations via an LLM-powered backend.",
       tech: [
-        "Next.js",
+        "Next.js 15",
+        "AWS Lambda",
+        "API Gateway",
         "React",
         "TypeScript",
         "Tailwind CSS",
-        "Node.js",
-        "Express.js",
-        "MongoDB",
-        "JWT",
-        "Render",
+        "Hugging Face Inference API",
+        "Redis",
         "Vercel",
+        "Flask"
       ],
-      category: "Full-Stack Management Platform",
-      status: "Production Ready",
-      link: "https://github.com/Aviijeet12/ProU-EMS",
+      category: "Healthcare AI",
+      status: "Active",
+      link: "https://hsc.avijitsingh.dev",
     },
     {
-      title: "Healthcare Symptom Checker",
+      title: "Spotify Playlist Rater — Music Playlist Analysis Platform",
       description:
-        "A healthcare-focused application, mostly TypeScript-based, with CSS styling, Python-backed logic and JavaScript integrations, deployed using Vercel/Render and powered by Gemini.",
-      tech: ["TypeScript", "CSS", "Python", "JavaScript", "Vercel", "Render", "Gemini"],
-      category: "Full-Stack Web App",
+        "An application that rates and analyzes Spotify playlists through authenticated API access to provide insights on track features and user data.",
+      tech: [
+        "Next.js",
+        "Node.js",
+        "TypeScript",
+        "OpenAI API",
+        "Spotify API"
+      ],
+      category: "Music Analytics",
       status: "Active",
-      link: "https://github.com/Aviijeet12/healthcare-symptom-checker",
+      link: "https://spotify.avijitsingh.dev",
+    },
+    {
+      title: "EMS — Employee Task Management System",
+      description:
+        "A web app for managing employee accounts and tasks with secure login, role-based dashboards, and real-time task tracking.",
+      tech: [
+        "Next.js (React + TypeScript)",
+        "CSS",
+        "MongoDB",
+        "Mongoose",
+        "JWT Authentication",
+        "Backend API routes (Next.js)",
+        "Context API"
+      ],
+      category: "Management Platform",
+      status: "Active",
+      link: "https://ems.avijitsingh.dev",
     },
   ]
 
@@ -853,32 +870,35 @@ function EnhancedContactSection() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
+    setSubmitStatus("idle")
 
-    emailjs.send(
-      "service_xps0rgh",
-      "template_n0w2xve",
-      {
-        from_name: formData.name,
-        from_email: formData.email,
-        subject: formData.subject,
-        message: formData.message,
-      },
-      "j5LT7kltMPmABktrQ"
-    )
-      .then(
-        (result) => {
-          setFormData({ name: "", email: "", subject: "", message: "" })
-          setSubmitStatus("success")
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
         },
-        (error) => {
-          setSubmitStatus("error")
-          console.error("EmailJS error:", error)
-        }
-      )
-      .finally(() => {
-        setIsSubmitting(false)
-        setTimeout(() => setSubmitStatus("idle"), 3000)
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          subject: formData.subject,
+          message: formData.message,
+        }),
       })
+
+      if (!response.ok) {
+        throw new Error("Failed to send message")
+      }
+
+      setFormData({ name: "", email: "", subject: "", message: "" })
+      setSubmitStatus("success")
+    } catch (error) {
+      console.error("Contact form error:", error)
+      setSubmitStatus("error")
+    } finally {
+      setIsSubmitting(false)
+      setTimeout(() => setSubmitStatus("idle"), 3000)
+    }
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {

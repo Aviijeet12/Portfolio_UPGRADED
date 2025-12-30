@@ -316,10 +316,10 @@ function EnhancedHeroSection() {
         >
           {[
             { href: "https://github.com/Aviijeet12", icon: Github, label: "GitHub" },
-            { href: "https://www.linkedin.com/in/avijit-pratap-singh-587313252/", icon: ExternalLink, label: "LinkedIn" },
+            { href: "https://www.linkedin.com/in/avijit12/", icon: ExternalLink, label: "LinkedIn" },
             //{ href: "https://www.instagram.com/avijitt.12/", icon: Instagram, label: "Instagram" },
             { href: "https://leetcode.com/u/avijit_1209/", icon: Code, label: "LeetCode" },
-            { href: "https://www.geeksforgeeks.org/user/avijitpreekw/", icon: Database, label: "GeeksforGeeks" },
+            { href: "https://www.geeksforgeeks.org/user/avijit12/", icon: Database, label: "GeeksforGeeks" },
           ].map((social, index) => (
             <motion.a
               key={social.label}
